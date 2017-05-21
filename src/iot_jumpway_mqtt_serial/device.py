@@ -45,11 +45,11 @@ class MQTTSerialClient():
 
 		self.serialClient = serial.Serial(self._configs['SystemDeviceCom'], 9600)  
 		time.sleep(5)
-		print("CONNECTED TO COM PORT: "+self._configs['SystemDeviceCom'])
+		print(("CONNECTED TO COM PORT: "+self._configs['SystemDeviceCom']))
         
     def deviceCommandsCallback(self,topic,payload):
 		
-		print("Received command data: %s" % (payload))
+		print(("Received command data: %s" % (payload)))
 
 		self.serialClient.write(payload+'\n')
 		self.serialClient.flush()
@@ -72,7 +72,7 @@ class MQTTSerialClient():
 			self.JumpWayMQTTClient.deviceCommandsCallback = self.deviceCommandsCallback
 			
 		except Exception as e:
-			print(str(e))
+			print((str(e)))
 			sys.exit()
             
     def begin(self):
